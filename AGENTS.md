@@ -2,7 +2,7 @@
 
 A static contractor site. Astro generates `dist/` at build time and never runs in production;
 a hand-written Cloudflare Worker serves that directory and owns the two dynamic routes. Read
-`docs/adr/` before changing anything structural — the three decisions there are load-bearing and
+`docs/adr/` before changing anything structural — the four decisions there are load-bearing and
 this file only restates their consequences.
 
 Read `CONTEXT.md` for the vocabulary. **Lead**, **Lead Source**, **Lead Status**, **Service**,

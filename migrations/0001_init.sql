@@ -1,6 +1,10 @@
 -- The Lead record, with only the columns the Contractor acts on. The fields a
 -- Homeowner submits arrive in a later migration; this one exists so the
 -- migration mechanism is proven rather than promised.
+--
+-- What the form does not ask for, and why, is in
+-- docs/adr/0004-the-lead-record-collects-only-what-the-contractor-can-act-on.md.
+-- The omissions are the part this file cannot express.
 
 CREATE TABLE leads (
   id TEXT PRIMARY KEY,

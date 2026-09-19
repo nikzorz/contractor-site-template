@@ -16,8 +16,8 @@ Then work through **[SETUP.md](./SETUP.md)** in order.
   or a Project.
 - **[CONTEXT.md](./CONTEXT.md)** — the vocabulary. Lead, Lead Source, Service, Project,
   Contractor, Homeowner.
-- **[docs/adr/](./docs/adr/)** — why the framework never runs in production, why Astro, and why a
-  client repo is a snapshot rather than a fork.
+- **[docs/adr/](./docs/adr/)** — why the framework never runs in production, why Astro, why a
+  client repo is a snapshot rather than a fork, and what the Lead record does and does not ask for.
 
 ## What it is not, yet
 
