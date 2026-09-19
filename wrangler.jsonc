@@ -1,0 +1,72 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  // ─────────────────────────────────────────────────────────────────────────────
+  //  SHARED POLICY — byte-identical in every client repo. Change it here, in the
+  //  template, and hand-carry it; never edit it in one client only.
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  "main": "worker/index.ts",
+
+  // Set once, when the repo is cut, and then left alone. Bumping it changes
+  // runtime semantics, so it is a deliberate test deploy, never maintenance.
+  "compatibility_date": "2026-09-19",
+
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page"
+
+    // "run_worker_first" is absent on purpose. Turning it on converts free,
+    // unlimited static asset requests into billable Worker invocations that
+    // rate-limit on the free plan, which is the opposite of what this stack is
+    // for. An absent setting reads as an oversight, so: it is not one.
+  },
+
+  // The pre-domain URL. Turn this off once the custom domain serves the site, so
+  // the same pages are not also indexable on workers.dev.
+  "workers_dev": true,
+
+  "observability": { "enabled": true },
+
+  // namespace_id is local to this Worker, not a Cloudflare account resource, so
+  // it is policy rather than a per-client identifier.
+  "ratelimits": [
+    {
+      "name": "LEAD_RATE_LIMIT",
+      "namespace_id": "1001",
+      "simple": { "limit": 5, "period": 60 }
+    }
+  ],
+
+  // ╔═══════════════════════════════════════════════════════════════════════════╗
+  // ║  PER CLIENT — everything below this banner, and nothing above it.         ║
+  // ║  One of the four locations that may differ between client repos.          ║
+  // ╚═══════════════════════════════════════════════════════════════════════════╝
+
+  "name": "example-tile-co",
+
+  // account_id is read from CLOUDFLARE_ACCOUNT_ID in the environment. Uncomment
+  // and set it here if a deploy cannot find the account.
+  // "account_id": "",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "example-tile-co-leads",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      "binding": "PHOTOS",
+      "bucket_name": "example-tile-co-lead-photos"
+    }
+  ]
+
+  // The custom domain, added once the zone is active in the same Cloudflare
+  // account as this Worker:
+  // "routes": [{ "pattern": "example.com", "custom_domain": true }]
+}

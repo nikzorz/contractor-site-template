@@ -1,0 +1,30 @@
+{
+  "business": {
+    "name": "Example Tile Co.",
+    "phone": "+1-555-0100",
+    "email": "hello@example.com",
+    "address": {
+      "street": "100 Example Street",
+      "city": "Example City",
+      "state": "CO",
+      "zip": "80900"
+    },
+    "serviceArea": ["Example City", "Example County"],
+    "hours": "Mon-Fri 8am-5pm"
+  },
+  "site": {
+    "url": "https://example.com",
+    "tagline": "Tile work done right."
+  },
+  "social": {
+    "facebook": null,
+    "instagram": null,
+    "googleBusinessProfile": null
+  },
+  "turnstile": {
+    "siteKey": ""
+  },
+  "umami": {
+    "websiteId": ""
+  }
+}

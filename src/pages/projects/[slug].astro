@@ -1,0 +1,25 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Base title={project.data.title}>
+  <h1>{project.data.title}</h1>
+  <p>{project.data.roomType} in {project.data.location}</p>
+  <Image src={project.data.photo} alt={project.data.title} width={960} />
+  <Content />
+  {project.data.gallery.map((photo) => <Image src={photo} alt={project.data.title} width={480} />)}
+</Base>

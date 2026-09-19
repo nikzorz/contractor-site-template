@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/site-config';
+
+// The Lead form is not in this template. `/api/lead` answers 501 until the
+// Worker is built out, and a form posting to it would be a broken promise on a
+// page a Homeowner actually reaches. See AGENTS.md, "What is deliberately missing".
+---
+
+<Base title="Contact">
+  <h1>Contact</h1>
+  <p>Call {site.business.phone} or email {site.business.email}.</p>
+  <p>{site.business.hours}. Serving {site.business.serviceArea.join(', ')}.</p>
+</Base>

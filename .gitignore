@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+
+# Secrets live in wrangler and in GitHub repo secrets, never in the repo.
+.dev.vars
+.env
+
+.DS_Store

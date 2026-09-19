@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+
+const projects = await getCollection('projects');
+---
+
+<Base title="Projects">
+  <h1>Projects</h1>
+  <ul>
+    {
+      projects.map((project) => (
+        <li>
+          <a href={`/projects/${project.id}`}>
+            <Image src={project.data.photo} alt={project.data.title} width={480} />
+            <h2>{project.data.title}</h2>
+          </a>
+          <p>
+            {project.data.roomType} in {project.data.location}
+          </p>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

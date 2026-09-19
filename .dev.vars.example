@@ -1,0 +1,8 @@
+# Copy to .dev.vars for `wrangler dev`, and set the same names as Worker secrets
+# in production with `wrangler secret put <NAME>`. .dev.vars is gitignored and no
+# value here is ever committed.
+
+TURNSTILE_SECRET_KEY=
+PUSHOVER_APP_TOKEN=
+PUSHOVER_USER_KEY=
+RESEND_API_KEY=

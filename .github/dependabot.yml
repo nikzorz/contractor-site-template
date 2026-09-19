@@ -1,0 +1,14 @@
+# Tell us about vulnerabilities, never about versions.
+#
+# Dependabot security updates are a repository setting and stay ON. This file
+# governs version updates, and open-pull-requests-limit: 0 turns them off:
+# automated bumps are churn against a pin-everything policy, while silence on a
+# known CVE is its own unattended failure mode.
+
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0

@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../lib/site-config';
+
+// This page exists because the Lead form's retention promise has to land
+// somewhere real. The text below is a placeholder and SETUP.md asks for the
+// business's own words before launch.
+---
+
+<Base title="Privacy">
+  <h1>Privacy</h1>
+  <p>
+    {site.business.name} collects what you type into the estimate form: your name, how to reach
+    you, where the work is, what you want done, and any photos you attach.
+  </p>
+  <p>It is used to answer you and to quote the work. It is not sold and it is not shared.</p>
+  <p>Photos are deleted after twelve months.</p>
+  <p>To have your details removed, email {site.business.email}.</p>
+</Base>

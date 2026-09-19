@@ -1,0 +1,28 @@
+{
+  "name": "contractor-site-template",
+  "version": "0.1.0",
+  "description": "Static contractor site on Cloudflare Workers: Astro at build time, a hand-written Worker at the edge.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": "24.21.0",
+    "npm": "11.19.0"
+  },
+  "packageManager": "npm@11.19.0",
+  "scripts": {
+    "dev": "astro dev",
+    "validate": "node scripts/validate.mjs",
+    "build": "npm run validate && astro build",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate": "wrangler d1 migrations apply DB --remote"
+  },
+  "dependencies": {
+    "astro": "7.3.3",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260919.1",
+    "wrangler": "4.135.0"
+  }
+}

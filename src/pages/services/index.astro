@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Services">
+  <h1>Services</h1>
+  <ul>
+    {
+      services.map((service) => (
+        <li>
+          <a href={`/services/${service.id}`}>
+            <Image src={service.data.photo} alt={service.data.title} width={480} />
+            <h2>{service.data.title}</h2>
+          </a>
+          <p>{service.data.summary}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
